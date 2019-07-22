@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dashboard -- webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,7 +14,8 @@
   "dependencies": {
     "force-strict-loader": "file:../force-strict-loader",
     "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.6",
+    "webpack-dashboard": "^3.0.7"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.7.2"
