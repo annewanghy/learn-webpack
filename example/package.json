@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "force-strict-loader": "file:../force-strict-loader",
+    "swiper": "^4.5.0",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6",
     "webpack-dashboard": "^3.0.7"
@@ -22,6 +23,7 @@
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.8.0",
+    "style-loader": "^1.0.0",
     "webpack-bundle-analyzer": "^3.4.1",
     "webpack-dev-server": "^3.7.2"
   }
