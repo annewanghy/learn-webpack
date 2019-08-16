@@ -1,9 +1,20 @@
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "production",
   devtool: "source-map",
+  plugins: [
+    new BundleAnalyzerPlugin(),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // all options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css",
+      ignoreOrder: false // Enable to remove warnings about conflicting order
+    })
+  ],
   module: {
     rules: [
       {
@@ -19,10 +30,13 @@ module.exports = {
         test: /\.less$/,
         use: [
           {
-            loader: "style-loader" // creates style nodes from JS strings
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === "production"
+            }
           },
           {
-            loader: "css-loader" // translates CSS into CommonJS
+            loader: "css-loader" // translates CSS into CommonJS,
           },
           {
             loader: "less-loader" // compiles Less to CSS
@@ -49,6 +63,5 @@ module.exports = {
         }
       }
     }
-  },
-  plugins: [new BundleAnalyzerPlugin()]
+  }
 };
