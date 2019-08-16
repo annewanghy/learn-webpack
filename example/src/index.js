@@ -2,28 +2,31 @@ import "./variation.less";
 import { add } from "./math";
 console.log(add(1, 2));
 console.log("hello world");
-import Swiper from "swiper";
 
-var mySwiper = new Swiper(".swiper-container", {
-  // Optional parameters
-  direction: "horizontal",
-  loop: true,
+import("swiper").then(module => {
+  const Swiper = module.default;
 
-  // If we need pagination
-  pagination: {
-    el: ".swiper-pagination"
-  },
+  var mySwiper = new Swiper(".swiper-container", {
+    // Optional parameters
+    direction: "horizontal",
+    loop: true,
 
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  },
+    // If we need pagination
+    pagination: {
+      el: ".swiper-pagination"
+    },
 
-  // And if we need scrollbar
-  scrollbar: {
-    el: ".swiper-scrollbar"
-  }
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: ".swiper-scrollbar"
+    }
+  });
+
+  console.log("mySwiper", mySwiper);
 });
-
-console.log("mySwiper", mySwiper);
