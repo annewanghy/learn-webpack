@@ -1,5 +1,8 @@
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+
 module.exports = {
-  mode: "development",
+  mode: "production",
   devtool: "source-map",
   module: {
     rules: [
@@ -11,6 +14,20 @@ module.exports = {
             sourceMap: true
           }
         }
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          },
+          {
+            loader: "less-loader" // compiles Less to CSS
+          }
+        ]
       }
     ]
   },
@@ -32,5 +49,6 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  plugins: [new BundleAnalyzerPlugin()]
 };

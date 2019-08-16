@@ -13,12 +13,16 @@
   "license": "ISC",
   "dependencies": {
     "force-strict-loader": "file:../force-strict-loader",
-    "lodash": "^4.17.15",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6",
     "webpack-dashboard": "^3.0.7"
   },
   "devDependencies": {
+    "css-loader": "^3.2.0",
+    "less-loader": "^5.0.0",
+    "style-loader": "^1.0.0",
+    "less": "^3.9.0",
+    "webpack-bundle-analyzer": "^3.4.1",
     "webpack-dev-server": "^3.7.2"
   }
 }
