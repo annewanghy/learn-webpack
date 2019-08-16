@@ -28,7 +28,7 @@ module.exports = {
         }
       },
       {
-        test: /\.less$/,
+        test: /\.(le|c)ss$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,

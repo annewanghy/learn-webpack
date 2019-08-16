@@ -3,6 +3,8 @@ import { add } from "./math";
 console.log(add(1, 2));
 console.log("hello world");
 
+import "swiper/dist/css/swiper.css";
+
 import("swiper").then(module => {
   const Swiper = module.default;
 
