@@ -3,9 +3,13 @@ import { add } from "./math";
 console.log(add(1, 2));
 console.log("hello world");
 
-import "swiper/dist/css/swiper.css";
-
 setTimeout(() => {
+  import(/* webpackChunkName: "swiper.css" */ "swiper/dist/css/swiper.css")
+    .then(module => console.log(module))
+    .catch(e => {
+      console.log("import swiper css error", e);
+    });
+
   import(/* webpackChunkName: "swiper" */ "swiper").then(module => {
     const Swiper = module.default;
 
@@ -33,4 +37,4 @@ setTimeout(() => {
 
     console.log("mySwiper", mySwiper);
   });
-}, 5000);
+}, 1000);

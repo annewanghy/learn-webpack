@@ -1,20 +1,15 @@
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
   mode: "production",
   devtool: "source-map",
-  plugins: [
-    new BundleAnalyzerPlugin(),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // all options are optional
-      filename: "[name].css",
-      chunkFilename: "[id].css",
-      ignoreOrder: false // Enable to remove warnings about conflicting order
-    })
-  ],
+  plugins: [new BundleAnalyzerPlugin()],
+  output: {
+    publicPath: "https://annewanghy.github.io/swiper/"
+  },
   module: {
     rules: [
       {
@@ -31,10 +26,7 @@ module.exports = {
         test: /\.(le|c)ss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: process.env.NODE_ENV === "production"
-            }
+            loader: "style-loader"
           },
           {
             loader: "css-loader" // translates CSS into CommonJS,
@@ -45,24 +37,8 @@ module.exports = {
         ]
       }
     ]
+  },
+  optimization: {
+    minimizer: [new TerserPlugin()]
   }
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       commons: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         // cacheGroupKey here is `commons` as the key of the cacheGroup
-  //         name(module, chunks, cacheGroupKey) {
-  //           const moduleFileName = module
-  //             .identifier()
-  //             .split("/")
-  //             .reduceRight(item => item);
-  //           const allChunksNames = chunks.map(item => item.name).join("~");
-  //           return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
-  //         },
-  //         chunks: "all"
-  //       }
-  //     }
-  //   }
-  // }
 };
